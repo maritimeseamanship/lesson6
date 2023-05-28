@@ -101,15 +101,85 @@ console.log(arrArr3);
 }
 */
 
+const cards = [
+    {cardSuit: 'spade', value: '6', colour: 'black'},
+    {cardSuit: 'spade', value: '7', colour: 'black'},
+    {cardSuit: 'spade', value: '8', colour: 'black'},
+    {cardSuit: 'spade', value: '9', colour: 'black'},
+    {cardSuit: 'spade', value: '10', colour: 'black'},
+    {cardSuit: 'spade', value: 'ace', colour: 'black'},
+    {cardSuit: 'spade', value: 'jack', colour: 'black'},
+    {cardSuit: 'spade', value: 'queen', colour: 'black'},
+    {cardSuit: 'spade', value: 'king', colour: 'black'},
+    {cardSuit: 'clubs', value: '6', colour: 'black'},
+    {cardSuit: 'clubs', value: '7', colour: 'black'},
+    {cardSuit: 'clubs', value: '8', colour: 'black'},
+    {cardSuit: 'clubs', value: '9', colour: 'black'},
+    {cardSuit: 'clubs', value: '10', colour: 'black'},
+    {cardSuit: 'clubs', value: 'ace', colour: 'black'},
+    {cardSuit: 'clubs', value: 'jack', colour: 'black'},
+    {cardSuit: 'clubs', value: 'queen', colour: 'black'},
+    {cardSuit: 'clubs', value: 'king', colour: 'black'},
+    {cardSuit: 'heart', value: '6', colour: 'red'},
+    {cardSuit: 'heart', value: '7', colour: 'red'},
+    {cardSuit: 'heart', value: '8', colour: 'red'},
+    {cardSuit: 'heart', value: '9', colour: 'red'},
+    {cardSuit: 'heart', value: '10', colour: 'red'},
+    {cardSuit: 'heart', value: 'ace', colour: 'red'},
+    {cardSuit: 'heart', value: 'jack', colour: 'red'},
+    {cardSuit: 'heart', value: 'queen', colour: 'red'},
+    {cardSuit: 'heart', value: 'king', colour: 'red'},
+    {cardSuit: 'diamond', value: '6', colour: 'red'},
+    {cardSuit: 'diamond', value: '7', colour: 'red'},
+    {cardSuit: 'diamond', value: '8', colour: 'red'},
+    {cardSuit: 'diamond', value: '9', colour: 'red'},
+    {cardSuit: 'diamond', value: '10', colour: 'red'},
+    {cardSuit: 'diamond', value: 'ace', colour: 'red'},
+    {cardSuit: 'diamond', value: 'jack', colour: 'red'},
+    {cardSuit: 'diamond', value: 'queen', colour: 'red'},
+    {cardSuit: 'diamond', value: 'king', colour: 'red'},
+]
+let cardMystery = cards.find((card)  => card.cardSuit === 'spade' && card.value === 'ace');
+ console.log(cardMystery);
 
+let arrCard6 = cards.filter((card)  =>  card.value ==='6');
+console.log(arrCard6);
 
- /*   Взяти описану колоду карт, та за допомоги reduce упакувати всі карти по "мастях" в об'єкт
-{
+let arrCardRed = cards.filter((card)  => card.colour === 'red');
+console.log(arrCardRed);
+
+let arrDiamond = cards.filter((card)  => card.cardSuit === 'diamond');
+console.log(arrDiamond);
+
+let arrClubs = cards.filter((card)  => ['9', '10', 'ace', 'jack', 'queen', 'king'].includes(card.value) && card.cardSuit === 'clubs');
+console.log(arrClubs);
+
+/*   Взяти описану колоду карт, та за допомоги reduce упакувати всі карти по "мастях" в об'єкт{
     spades:[],
         diamonds:[],
     hearts:[],
     clubs:[]
 } */
+let cardsSorted = cards.reduce((acc, curVal) => {
+    switch(curVal.cardSuit){
+        case 'spade':
+            acc.spades.push(curVal);
+            break;
+        case 'diamond':
+            acc.diamonds.push(curVal);
+            break;
+        case 'hearts':
+            acc.hearts.push(curVal);
+            break;
+        case 'clubs':
+            acc.clubs.push(curVal);
+            break;
+    }
+    return acc;
+   },
+    { spades:[], diamonds:[], hearts:[], clubs:[],
+    })
+console.log(cardsSorted);
 
 /*    взяти з arrays.js (який лежить в папці 2023 plan) масив coursesArray
 --написати пошук всіх об'єктів, в який в modules є sass
